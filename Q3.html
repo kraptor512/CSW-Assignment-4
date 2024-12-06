@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <style>
+  .grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px); 
+ gap:20px;            
+  margin-top: 20px;
+  padding:20px;
+  }
+ .img-thumbnail {
+  width: 200px;
+  height: 200px;
+  transition: border-radius 0.3s ease;
+  }
+ </style>
+</head>
+<body>
+<div class="grid-container">
+    <div class="grid-item">
+        <img class="img-thumbnail" src="C:\Users\manda\Downloads\eww.jpeg" alt="Image 1">
+    </div>
+    <div class="grid-item">
+        <img class="img-thumbnail" src="C:\Users\manda\Downloads\spi.jpg" alt="Image 2">
+    </div>
+    <div class="grid-item">
+        <img class="img-thumbnail" src="C:\Users\manda\Downloads\her.jpeg" alt="Image 3">
+   </div>
+<button id="changeStyleBtn">Change to Circle</button>
+<script>
+$(document).ready(function(){
+$('#changeStyleBtn').click(function() {
+$('.img-thumbnail').css('border-radius', '50%');
+});
+});
+</script>
+</body>
+</html>

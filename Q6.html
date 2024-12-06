@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Progress Bars</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    .progress-container {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body class="p-4">
+  <div class="container">
+    <button id="uploadBtn" class="btn btn-primary">Upload File</button>
+    <div class="progress-container">
+      <div class="progress my-3">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-3">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-3">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress my-3">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#uploadBtn').on('click', function () {
+        $('.progress-container').fadeIn();
+        animateProgressBars($('.progress-bar'), 0);
+      });
+        function animateProgressBars(bars, index) {
+        if (index >= bars.length) return;
+        let currentBar = $(bars[index]);
+        let width = 0;
+        let interval = setInterval(function () {
+          if (width >= 100) {
+            clearInterval(interval);
+            animateProgressBars(bars, index + 1);
+          } else {
+            width++;
+            currentBar.css('width', width + '%').attr('aria-valuenow', width);
+          }
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>
